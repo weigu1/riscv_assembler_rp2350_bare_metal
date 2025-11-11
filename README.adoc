@@ -1,6 +1,6 @@
 == RISC-V assembler on Pico2 (RP2350) bare metal
 
-image::pico2_rp2350.png[Pico2 (RP2350), 500, align=center]
+image::png/pico2_rp2350.png[Pico2 (RP2350), 500, align=center]
 
 *work in progress*
 
