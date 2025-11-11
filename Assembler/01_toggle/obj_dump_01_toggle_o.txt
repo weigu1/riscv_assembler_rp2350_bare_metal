@@ -1,0 +1,191 @@
+
+01_toggle.o:     file format elf32-littleriscv
+
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+00000000 l    d  .data	00000000 .data
+00000000 l    d  .bss	00000000 .bss
+0000000f l       *ABS*	00000000 PIN_OUT
+000f4240 l       *ABS*	00000000 DELAY_NUMBER
+0000007c l       *ABS*	00000000 GPIO_OFFSET
+00000040 l       *ABS*	00000000 PADS_OFFSET
+00003000 l       *ABS*	00000000 ATOMIC_CLR
+00000100 l       *ABS*	00000000 PAD_MASK_ISO_BIT
+40028000 l       *ABS*	00000000 IO_BANK0_BASE
+d0000000 l       *ABS*	00000000 SIO_BASE
+40038000 l       *ABS*	00000000 PADS_BANK0_BASE
+4002807c l       *ABS*	00000000 GPIO_CTRL
+d0000028 l       *ABS*	00000000 GPIO_OUT_XOR
+d0000038 l       *ABS*	00000000 GPIO_OE_SET
+4003b040 l       *ABS*	00000000 PAD_CLR
+00000134 l       .text	00000000 setup
+00000174 l       .text	00000000 mainloop
+00000184 l       .text	00000000 delay
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+0000011e g       .text	00000000 _start
+00000000         *UND*	00000000 _stack_top
+00000134 g       .text	00000000 main
+
+
+
+Disassembly of section .text:
+
+00000000 <_start-0x11e>:
+   0:	0001                	nop
+			0: R_RISCV_ALIGN	*ABS*+0xfe
+   2:	00000013          	nop
+   6:	00000013          	nop
+   a:	00000013          	nop
+   e:	00000013          	nop
+  12:	00000013          	nop
+  16:	00000013          	nop
+  1a:	00000013          	nop
+  1e:	00000013          	nop
+  22:	00000013          	nop
+  26:	00000013          	nop
+  2a:	00000013          	nop
+  2e:	00000013          	nop
+  32:	00000013          	nop
+  36:	00000013          	nop
+  3a:	00000013          	nop
+  3e:	00000013          	nop
+  42:	00000013          	nop
+  46:	00000013          	nop
+  4a:	00000013          	nop
+  4e:	00000013          	nop
+  52:	00000013          	nop
+  56:	00000013          	nop
+  5a:	00000013          	nop
+  5e:	00000013          	nop
+  62:	00000013          	nop
+  66:	00000013          	nop
+  6a:	00000013          	nop
+  6e:	00000013          	nop
+  72:	00000013          	nop
+  76:	00000013          	nop
+  7a:	00000013          	nop
+  7e:	00000013          	nop
+  82:	00000013          	nop
+  86:	00000013          	nop
+  8a:	00000013          	nop
+  8e:	00000013          	nop
+  92:	00000013          	nop
+  96:	00000013          	nop
+  9a:	00000013          	nop
+  9e:	00000013          	nop
+  a2:	00000013          	nop
+  a6:	00000013          	nop
+  aa:	00000013          	nop
+  ae:	00000013          	nop
+  b2:	00000013          	nop
+  b6:	00000013          	nop
+  ba:	00000013          	nop
+  be:	00000013          	nop
+  c2:	00000013          	nop
+  c6:	00000013          	nop
+  ca:	00000013          	nop
+  ce:	00000013          	nop
+  d2:	00000013          	nop
+  d6:	00000013          	nop
+  da:	00000013          	nop
+  de:	00000013          	nop
+  e2:	00000013          	nop
+  e6:	00000013          	nop
+  ea:	00000013          	nop
+  ee:	00000013          	nop
+  f2:	00000013          	nop
+  f6:	00000013          	nop
+  fa:	00000013          	nop
+  fe:	ffffded3          	.word	0xffffded3
+ 102:	11010142          	.word	0x11010142
+ 106:	00000344          	.word	0x00000344
+	...
+			10a: R_RISCV_32	_start
+			10e: R_RISCV_32	_stack_top
+ 112:	000004ff          	.word	0x000004ff
+ 116:	00000000          	.word	0x00000000
+ 11a:	ab123579          	.word	0xab123579
+
+0000011e <_start>:
+ 11e:	00000117          	auipc	sp,0x0
+			11e: R_RISCV_PCREL_HI20	_stack_top
+			11e: R_RISCV_RELAX	*ABS*
+ 122:	00010113          	mv	sp,sp
+			122: R_RISCV_PCREL_LO12_I	.L0 
+			122: R_RISCV_RELAX	*ABS*
+ 126:	00000097          	auipc	ra,0x0
+			126: R_RISCV_CALL_PLT	main
+			126: R_RISCV_RELAX	*ABS*
+ 12a:	000080e7          	jalr	ra # 126 <_start+0x8>
+ 12e:	10500073          	wfi
+ 132:	b7f5                	j	11e <_start>
+			132: R_RISCV_RVC_JUMP	_start
+
+00000134 <main>:
+ 134:	400282b7          	lui	t0,0x40028
+ 138:	07c28293          	addi	t0,t0,124 # 4002807c <GPIO_CTRL>
+ 13c:	0002a303          	lw	t1,0(t0)
+ 140:	fe037313          	andi	t1,t1,-32
+ 144:	00536313          	ori	t1,t1,5
+ 148:	0062a023          	sw	t1,0(t0)
+ 14c:	d00002b7          	lui	t0,0xd0000
+ 150:	03828293          	addi	t0,t0,56 # d0000038 <GPIO_OE_SET>
+ 154:	6321                	lui	t1,0x8
+ 156:	0062a023          	sw	t1,0(t0)
+ 15a:	4003b2b7          	lui	t0,0x4003b
+ 15e:	04028293          	addi	t0,t0,64 # 4003b040 <PAD_CLR>
+ 162:	10000313          	li	t1,256
+ 166:	0062a023          	sw	t1,0(t0)
+ 16a:	d00002b7          	lui	t0,0xd0000
+ 16e:	02828293          	addi	t0,t0,40 # d0000028 <GPIO_OUT_XOR>
+ 172:	6321                	lui	t1,0x8
+
+00000174 <mainloop>:
+ 174:	0062a023          	sw	t1,0(t0)
+ 178:	000f4537          	lui	a0,0xf4
+ 17c:	24050513          	addi	a0,a0,576 # f4240 <DELAY_NUMBER>
+ 180:	2011                	jal	184 <delay>
+			180: R_RISCV_RVC_JUMP	delay
+ 182:	bfcd                	j	174 <mainloop>
+			182: R_RISCV_RVC_JUMP	mainloop
+
+00000184 <delay>:
+ 184:	157d                	addi	a0,a0,-1
+ 186:	fd7d                	bnez	a0,184 <delay>
+			186: R_RISCV_RVC_BRANCH	delay
+ 188:	8082                	ret
+ 18a:	0001                	nop
+ 18c:	00000013          	nop
+ 190:	00000013          	nop
+ 194:	00000013          	nop
+ 198:	00000013          	nop
+ 19c:	00000013          	nop
+ 1a0:	00000013          	nop
+ 1a4:	00000013          	nop
+ 1a8:	00000013          	nop
+ 1ac:	00000013          	nop
+ 1b0:	00000013          	nop
+ 1b4:	00000013          	nop
+ 1b8:	00000013          	nop
+ 1bc:	00000013          	nop
+ 1c0:	00000013          	nop
+ 1c4:	00000013          	nop
+ 1c8:	00000013          	nop
+ 1cc:	00000013          	nop
+ 1d0:	00000013          	nop
+ 1d4:	00000013          	nop
+ 1d8:	00000013          	nop
+ 1dc:	00000013          	nop
+ 1e0:	00000013          	nop
+ 1e4:	00000013          	nop
+ 1e8:	00000013          	nop
+ 1ec:	00000013          	nop
+ 1f0:	00000013          	nop
+ 1f4:	00000013          	nop
+ 1f8:	00000013          	nop
+ 1fc:	00000013          	nop
