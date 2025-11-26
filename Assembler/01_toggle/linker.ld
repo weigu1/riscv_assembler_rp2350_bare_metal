@@ -8,15 +8,15 @@ MEMORY {
 }
 
 SECTIONS {
-    .text : {                /* All .text sections */
+    .text : ALIGN(4) {       /* All .text sections */
         *(.text*)
     } > FLASH                /* in FLASH */
 
-    .data : {                /* All .data sections */
+    .data : ALIGN(4) {       /* All .data sections */
         *(.data*)
     } > RAM                  /* in RAM */
 
-    .bss : {                 /* All .bss sections */
+    .bss : ALIGN(4) {        /* All .bss sections */
         *(.bss*)
     } > RAM                  /* in RAM */
 

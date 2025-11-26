@@ -2,7 +2,6 @@
 ### 01_toggle.S
 ### weigu.lu
 
-
         ### RP2350 Image Definition Block
         # This block is required for the RP2350 to recognize the binary as a valid
         # RISC-V executable. It must appear within the first 4 KB of the image.
@@ -22,7 +21,7 @@
         .word 0xab123579 # Footer magic number
 
          ### Global vars
-        .equ PIN_OUT,         15            # Pin (GPIO) nr to use (25 for LED, Pico2)
+        .equ PIN_OUT,         25            # Pin to use (25 for onboard LED on Pico2)
         .equ DELAY_NR,        1000000       # 1000000 gives us ~ 2 Hz (12MHz clock)
 
         ### Bits, Masks and Offsets
@@ -48,15 +47,15 @@
 _start:         la sp, _stack_top   # Load the stack pointer with the top of the stack
                 call main           # Call the main function
                 wfi                 # Wait for interrupt (save power if CPU idle)
-                j _start            # Safeguard if main returns (should never happen)
+                j _start            # safeguard if main returns (should never happen)
 
 ### Main Function
         .section .text              # Code section
         .global main                # Make 'main' visible to the linker
 main:           ### SETUP
 setup:          # Tell the multiplexer to set our Pinx to GPIOx
-                li t0, GPIO_CTRL    # Load the address of the GPIO_CTRL reg.
-                lw t1, 0(t0)        # Load current value of the GPIO_CTRL reg.
+                li t0, GPIO_CTRL    # Load the address of the GPIO_CTRL reg. to t0
+                lw t1, 0(t0)        # Load current value of the GPIO_CTRL reg. to t1
                 andi t1, t1, ~0x1F  # Clear the lower 5 bits (function select)
                 ori t1, t1, GPIO_CTRL_FUNCT_SIO # Set the funct. select to SIO (GPIO)
                 sw t1, 0(t0)        # Store updated value back to the GPIO_CTRL reg.
@@ -77,9 +76,8 @@ setup:          # Tell the multiplexer to set our Pinx to GPIOx
 
 mainloop:       ### MAIN LOOP: Toggle output off GPIOx
                 sw t1, 0(t0)        # Set the bit (atomic bit setting-writing)
-                # uncomment both lines if you use the onboard LED
-                #li a0, DELAY_NR    # set counter for delay loop (parameter a0)
-                #jal delay          # jump and link delay (command call for big jumps)
+                li a0, DELAY_NR    # set counter for delay loop (parameter a0)
+                jal delay          # jump and link delay (command call for big jumps)
                 j mainloop          # jump mainloop forever
 
 delay:          # Subroutine delay (parameter a0)
